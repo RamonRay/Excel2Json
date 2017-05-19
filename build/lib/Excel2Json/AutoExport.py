@@ -2,6 +2,7 @@ import os
 import testexport
 import time
 import xlrd
+import sys
 def listdir(dirname,pos_conditions,neg_conditions):
     result=[]
     list=os.listdir(dirname)
@@ -18,7 +19,7 @@ def listdir(dirname,pos_conditions,neg_conditions):
         if check==1:
             result.append(filename)
     return result
-def jsonexport(dir='..\\sample\\',expdir='..\\sampleexport\\',pos_conditions=['xls'],neg_conditions=['string','definition']):
+def jsonexport(dir='..\\config_common\\',expdir='..\\ramonexport\\',pos_conditions=['xls'],neg_conditions=['string','definition']):
     start=time.time()
     files=listdir(dir,pos_conditions,neg_conditions)
     nums =len(files)
@@ -27,11 +28,13 @@ def jsonexport(dir='..\\sample\\',expdir='..\\sampleexport\\',pos_conditions=['x
         try:
             testexport.jsonexport(file,dir,expdir)
             i+=1
-            print '%s  ( %d / %d )   %f s' %(file,i,nums,time.time()-start)
+            print '%s  ( %d / %d )    '%(file,i,nums),time.time()-start,'s'
         except ValueError:
             print file,'went wrong, Type'
         except xlrd.biffh.XLRDError:
             print 'no output sheet in %s' %(file)
+        except:
+            print file,'went wrong'
     print 'Done',time.time()-start
 if __name__ == '__main__':
     jsonexport()

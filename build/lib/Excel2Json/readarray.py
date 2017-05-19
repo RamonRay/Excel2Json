@@ -1,6 +1,7 @@
 import xlrd
 import readtable
 import json
+import collections
 def readarray(book,sheet,begin,count,primary):
     cols=sheet.ncols
     extention=['array','table']
@@ -18,10 +19,12 @@ def readarray(book,sheet,begin,count,primary):
     nums=len(record_cols)
     if primary in record_name or primary==sheet.cell_value(1,0):
         isarray=0
+    elif 'string' in record_type or 'int' in record_type or 'object' in record_type or 'float' in record_type:
+        isarray=0
     else:
         isarray=1
     for row in range(begin-1,begin+count-1):
-        item={}
+        item=collections.OrderedDict()
         for i in range(nums):
             if record_type[i] in extention:
                 childsheet=book.sheet_by_name(sheet.cell_value(row,record_cols[i]))

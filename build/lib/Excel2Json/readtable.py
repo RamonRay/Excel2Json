@@ -44,7 +44,7 @@ def readtable(book,sheet,begin,count,primary):
     nums=len(record_cols)
     for row in range(begin-1,begin+count-1):
         item=collections.OrderedDict()
-        for i in range(0,nums,1):
+        for i in range(nums):
             if record_type[i] in extention:
                 sheet_name=sheet.cell_value(row,record_cols[i])
                 childsheet=book.sheet_by_name(sheet_name)
@@ -60,7 +60,6 @@ def readtable(book,sheet,begin,count,primary):
                         item[sheet_name]=tmp[0]
                 else:
                     item[sheet_name]=readtable(book,childsheet,begin,count,record_name[i])
-
             else:
                 value = sheet.cell_value(row, record_cols[i])
                 if record_type[i] == 'object':
