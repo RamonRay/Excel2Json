@@ -26,7 +26,7 @@ def jsonexport(dir='..\\sample\\',expdir='..\\sampleexport\\',pos_conditions=['x
     i=0
     for file in files:
         try:
-            testexport.jsonexport(file,dir,expdir)
+            testexport.singlejsonexport(file,dir,expdir)
             i+=1
             print '%s  ( %d / %d )    '%(file,i,nums),time.time()-start,'s'
         except ValueError:

@@ -1,7 +1,7 @@
 from xlrd import *
 import json
 import readtable
-def jsonexport(filename,dir,expdir):
+def singlejsonexport(filename,dir,expdir):
     xlsfile=dir+filename
     book=open_workbook(xlsfile)
     output=book.sheet_by_name('output')
