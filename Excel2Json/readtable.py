@@ -37,6 +37,10 @@ def readtable(book,sheet,begin,count,primary):
             if primary==name and hasprimary==0:
                 primary_col=current_col
                 hasprimary=1
+                if primary!='empty':
+                    record_name.append(name)
+                    record_cols.append(current_col)
+                    record_type.append(type)
             else:
                 record_name.append(name)
                 record_cols.append(current_col)
