@@ -19,7 +19,7 @@ def listdir(dirname,pos_conditions,neg_conditions):
         if check==1:
             result.append(filename)
     return result
-def jsonexport(dir='..\\config_common\\',expdir='..\\ramonexport\\',pos_conditions=['xls'],neg_conditions=['string','definition']):
+def jsonexport(dir='..\\sample\\',expdir='..\\sampleexport\\',pos_conditions=['xls'],neg_conditions=['string','definition']):
     start=time.time()
     files=listdir(dir,pos_conditions,neg_conditions)
     nums =len(files)
