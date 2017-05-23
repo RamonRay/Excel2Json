@@ -45,6 +45,12 @@ def readarray(book,sheet,begin,count,primary):
                         value=json.loads(value)
                     elif record_type[i]=='int':
                         value=int(value)
+                    elif record_type[i]=="string":
+                        try:
+                            value=int(value)
+                            value=str(value)
+                        except ValueError:
+                            value=str(value)
                     item[record_name[i]]=value
             result.append(item)
         return (result,isarray)
