@@ -90,5 +90,5 @@ def readtable(book,sheet,begin,count,primary):
                 result.update(item)
         return result
     except ValueError:
-        print sheet.name,row,record_cols[i],value
+        print sheet.name,row,record_name[i],value
         raise ValueError

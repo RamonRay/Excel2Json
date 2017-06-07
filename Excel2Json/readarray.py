@@ -55,7 +55,7 @@ def readarray(book,sheet,begin,count,primary):
             result.append(item)
         return (result,isarray)
     except ValueError:
-        print sheet.name,row,record_cols[i],value
+        print sheet.name,row,record_name[i],value
         raise ValueError
     
 
