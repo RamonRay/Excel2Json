@@ -77,7 +77,7 @@ def readtable(book,sheet,begin,count,primary):
                             value=int(value)
                             value=str(value)
                         except ValueError:
-                            value=str(value)
+                            value=value.encode("utf-8")
                     item[record_name[i]] = value
             if primary_col==-1:
                 return item
@@ -90,5 +90,5 @@ def readtable(book,sheet,begin,count,primary):
                 result.update(item)
         return result
     except ValueError:
-        print sheet.name,row,record_cols[i],value
+        print sheet.name,row,record_name[i],value
         raise ValueError
