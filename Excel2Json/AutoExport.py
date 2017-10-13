@@ -3,6 +3,11 @@ import testexport
 import time
 import xlrd
 import sys
+import sys
+defaultencoding = 'utf-8'
+if sys.getdefaultencoding() != defaultencoding:
+    reload(sys)
+    sys.setdefaultencoding(defaultencoding)
 def listdir(dirname,pos_conditions,neg_conditions):
     result=[]
     list=os.listdir(dirname)
@@ -35,6 +40,7 @@ def jsonexport(dir='..\\sample\\',expdir='..\\sampleexport\\',pos_conditions=['x
             print 'no output sheet in %s' %(file)
         except:
             print file,'went wrong'
+
     print 'Done',time.time()-start
 if __name__ == '__main__':
     jsonexport()

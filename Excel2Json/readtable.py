@@ -63,7 +63,7 @@ def readtable(book,sheet,begin,count,primary):
                                 item[record_name[i]]=[]
                             item[record_name[i]].append(tmp[0])
                         else:
-                            item[sheet_name]=tmp[0]
+                            item[record_name[i]]=tmp[0]
                     else:
                         item[sheet_name]=readtable(book,childsheet,begin,count,record_name[i])
                 else:
@@ -77,7 +77,7 @@ def readtable(book,sheet,begin,count,primary):
                             value=int(value)
                             value=str(value)
                         except ValueError:
-                            value=value.encode("utf-8")
+                            pass
                     item[record_name[i]] = value
             if primary_col==-1:
                 return item

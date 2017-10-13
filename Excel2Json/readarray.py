@@ -50,7 +50,7 @@ def readarray(book,sheet,begin,count,primary):
                             value=int(value)
                             value=str(value)
                         except ValueError:
-                            value=value.encode("utf-8")
+                        	value=value
                     item[record_name[i]]=value
             result.append(item)
         return (result,isarray)
